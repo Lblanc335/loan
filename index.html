@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>신용대출 간편 조회 랜딩페이지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #222; line-height: 1.5; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* 색상 테마는 원하는 대로 변경 */
+    :root {
+      --primary: #0052cc;
+      --primary-dark: #003f99;
+      --accent: #ffb21a;
+      --bg-soft: #f5f7fb;
+      --border-soft: #e0e4f0;
+    }
+
+    /* 헤더 */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #fff;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .header-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--primary);
+    }
+    nav ul {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+    }
+    .header-cta {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-outline {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      background: #fff;
+    }
+    .btn-outline:hover { background: #f0f4ff; }
+
+    /* 히어로 */
+    .hero {
+      background: linear-gradient(135deg, #f3f6ff, #ffffff);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 16px 48px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+    .hero-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .hero-sub {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .hero-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+    .pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid var(--border-soft);
+    }
+    .hero-badges {
+      display: flex;
+      gap: 16px;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .hero-badges span::before {
+      content: "• ";
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* 신청 폼 카드 */
+    .hero-form-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(10, 40, 100, 0.15);
+      padding: 20px 18px 18px;
+    }
+    .hero-form-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .hero-form-sub {
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 16px;
+    }
+    .form-grid {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .form-row-inline {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    label {
+      font-size: 12px;
+      color: #555;
+      display: block;
+      margin-bottom: 4px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #d4d7e5;
+      font-size: 13px;
+    }
+    input:focus, select:focus {
+      outline: 2px solid #c8d8ff;
+      border-color: var(--primary);
+    }
+    .form-notice {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+    .form-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      color: #777;
+      margin-top: 6px;
+    }
+
+    /* 섹션 공통 */
+    section {
+      padding: 40px 16px;
+    }
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+    .section-sub {
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* 혜택 카드 */
+    .benefits {
+      background: #fff;
+    }
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .benefit-card {
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      padding: 18px;
+      background: #fff;
+    }
+    .benefit-badge {
+      font-size: 11px;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .benefit-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .benefit-text {
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* 상품/서비스 섹션 */
+    .products {
+      background: var(--bg-soft);
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--border-soft);
+      padding: 16px;
+      font-size: 13px;
+    }
+    .product-name {
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .product-meta {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .product-meta span {
+      display: block;
+    }
+
+    /* 절차 섹션 */
+    .steps {
+      background: #fff;
+    }
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .step-item {
+      text-align: center;
+      font-size: 13px;
+    }
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .step-title {
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .step-text {
+      color: #666;
+    }
+
+    /* 후기 / 신뢰 */
+    .trust {
+      background: #fff;
+    }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .review-card {
+      background: var(--bg-soft);
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 13px;
+      border: 1px solid var(--border-soft);
+      margin-bottom: 12px;
+    }
+    .review-name {
+      font-weight: 700;
+      font-size: 12px;
+      margin-top: 6px;
+      color: #444;
+    }
+    .trust-badges {
+      font-size: 12px;
+      color: #666;
+    }
+    .trust-badges li {
+      list-style: none;
+      margin-bottom: 4px;
+    }
+    .trust-badges li::before {
+      content: "✔ ";
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* 하단 CTA */
+    .cta-bottom {
+      background: var(--primary);
+      color: #fff;
+      padding: 32px 16px 36px;
+    }
+    .cta-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+    .cta-bottom-title {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .cta-bottom-sub {
+      font-size: 14px;
+      color: #e5edff;
+      margin-bottom: 12px;
+    }
+    .cta-bottom-small {
+      font-size: 12px;
+      color: #d0dbff;
+    }
+    .cta-bottom-card {
+      background: #fff;
+      color: #222;
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 13px;
+    }
+
+    /* 푸터 */
+    footer {
+      background: #111827;
+      color: #9ca3af;
+      padding: 18px 16px 26px;
+      font-size: 11px;
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #d1d5db;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    /* 반응형 */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .benefit-grid,
+      .product-grid,
+      .step-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .trust-grid,
+      .cta-wrap {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    @media (max-width: 640px) {
+      nav { display: none; }
+      .benefit-grid,
+      .product-grid,
+      .step-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .header-wrap { gap: 8px; }
+      .header-cta { display: none; }
+      .hero-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 헤더 -->
+  <header>
+    <div class="inner header-wrap">
+      <div class="logo">FINANCIAL-NOW</div>
+      <nav>
+        <ul>
+          <li><a href="#benefits">서비스 특징</a></li>
+          <li><a href="#products">대출 상품</a></li>
+          <li><a href="#steps">진행 절차</a></li>
+          <li><a href="#trust">신뢰 정보</a></li>
+        </ul>
+      </nav>
+      <div class="header-cta">
+        <span>상담문의 0000-0000</span>
+        <button class="btn btn-outline">카카오 상담</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 히어로 -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <h1 class="hero-title">최저금리 신용대출, 한 번에 간편 비교</h1>
+        <p class="hero-sub">
+          여러 금융사 대출 조건을 한 번에 확인하고, 내 상황에 맞는 최적의 대출을 무료로 상담 받아보세요.
+        </p>
+        <div class="hero-highlights">
+          <span class="pill">신용점수 영향 없이 한도조회</span>
+          <span class="pill">최단 00분 한도·금리 안내</span>
+          <span class="pill">전문 상담사 1:1 배정</span>
+        </div>
+        <div class="hero-badges">
+          <span>다수 금융사 제휴</span>
+          <span>개인정보 암호화 전송</span>
+        </div>
+      </div>
+
+      <div class="hero-form-card">
+        <div class="hero-form-title">간편 한도 · 금리 조회</div>
+        <div class="hero-form-sub">정보 입력 후 상담 요청을 남겨주시면, 담당자가 순차적으로 연락드립니다.</div>
+        <form>
+          <div class="form-grid">
+            <div class="form-row-inline">
+              <div>
+                <label>이름</label>
+                <input type="text" placeholder="홍길동" />
+              </div>
+              <div>
+                <label>연락처</label>
+                <input type="tel" placeholder="010-0000-0000" />
+              </div>
+            </div>
+            <div class="form-row-inline">
+              <div>
+                <label>직장 형태</label>
+                <select>
+                  <option>선택하세요</option>
+                  <option>직장인</option>
+                  <option>자영업자</option>
+                  <option>프리랜서</option>
+                  <option>기타</option>
+                </select>
+              </div>
+              <div>
+                <label>희망 대출금액</label>
+                <select>
+                  <option>선택하세요</option>
+                  <option>1천만원 이하</option>
+                  <option>1천만원 ~ 3천만원</option>
+                  <option>3천만원 ~ 5천만원</option>
+                  <option>5천만원 이상</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label>추가 문의사항 (선택)</label>
+              <input type="text" placeholder="원하시는 조건이 있다면 작성해주세요." />
+            </div>
+          </div>
+          <p class="form-notice">
+            상담 신청은 무료이며, 실제 대출 실행 시까지 어떠한 비용도 청구되지 않습니다.
+          </p>
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom:8px;">
+            한도 · 금리 무료 조회하기
+          </button>
+          <div class="form-footer">
+            <span>개인(신용)정보 수집·이용 동의 후 제출</span>
+            <a href="#" style="text-decoration: underline;">전문 보기</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 혜택 섹션 -->
+  <section class="benefits" id="benefits">
+    <div class="section-inner">
+      <h2 class="section-title">왜 이곳에서 비교해야 할까요?</h2>
+      <p class="section-sub">복잡한 대출 조건, 이제 한 번에 비교하고 최적의 선택만 하세요.</p>
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-badge">BENEFIT 01</div>
+          <div class="benefit-title">여러 금융사 조건 한 번에</div>
+          <p class="benefit-text">
+            제휴 금융사의 금리, 한도, 상환기간을 한 화면에서 비교하여 가장 유리한 조건을 선택하실 수 있습니다.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-badge">BENEFIT 02</div>
+          <div class="benefit-title">신용점수 영향 없이 조회</div>
+          <p class="benefit-text">
+            한도·금리 조회 단계에서는 신용평점에 영향을 주지 않는 안전한 방식으로 안내해드립니다.
+          </p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-badge">BENEFIT 03</div>
+          <div class="benefit-title">맞춤형 1:1 컨설팅</div>
+          <p class="benefit-text">
+            단순 비교를 넘어, 현재 대출 보유 현황과 상환 능력을 고려한 맞춤형 상담을 제공합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 상품/서비스 섹션 -->
+  <section class="products" id="products">
+    <div class="section-inner">
+      <h2 class="section-title">주요 신용대출 서비스 안내</h2>
+      <p class="section-sub">고객님의 상황에 따라 다양한 신용대출 상품을 제안해드립니다. (아래 내용은 예시입니다)</p>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-name">직장인 신용대출</div>
+          <div class="product-meta">
+            <span>대상: 4대 보험 가입 급여소득자</span>
+            <span>한도: 최대 0,000만원</span>
+            <span>금리: 연 0.% ~ 0.% (예시)</span>
+          </div>
+          <p>
+            재직기간, 연소득, 신용도에 따라 최적의 상품을 추천해드립니다.
+          </p>
+        </div>
+        <div class="product-card">
+          <div class="product-name">자영업자/프리랜서 신용대출</div>
+          <div class="product-meta">
+            <span>대상: 사업소득자, 프리랜서</span>
+            <span>한도: 최대 0,000만원</span>
+            <span>서류: 소득증빙 서류 등</span>
+          </div>
+          <p>
+            사업 매출, 거래 내역 등을 종합적으로 고려해 한도와 금리를 안내합니다.
+          </p>
+        </div>
+        <div class="product-card">
+          <div class="product-name">대환/통합대출</div>
+          <div class="product-meta">
+            <span>대상: 기존 대출 보유 고객</span>
+            <span>용도: 금리 인하, 다중채무 통합</span>
+          </div>
+          <p>
+            여러 건의 대출을 하나로 통합해 이자 부담을 줄일 수 있는지 검토해드립니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 절차 섹션 -->
+  <section class="steps" id="steps">
+    <div class="section-inner">
+      <h2 class="section-title">진행 절차는 이렇게 간단합니다</h2>
+      <p class="section-sub">복잡한 서류 준비 전에, 우선 한도와 금리부터 확인해보세요.</p>
+      <div class="step-grid">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <div class="step-title">간편 정보 입력</div>
+          <p class="step-text">
+            이름, 연락처 등 기본 정보만 입력해 상담 요청을 접수합니다.
+          </p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <div class="step-title">전문 상담사 상담</div>
+          <p class="step-text">
+            담당 상담사가 전화 또는 메신저로 연락드려 상황을 상세히 파악합니다.
+          </p>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <div class="step-title">최적의 상품 실행</div>
+          <p class="step-text">
+            안내받으신 조건 중 원하시는 상품을 선택해 대출을 진행합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 신뢰/후기 섹션 -->
+  <section class="trust" id="trust">
+    <div class="section-inner">
+      <h2 class="section-title">신뢰할 수 있는 상담 파트너</h2>
+      <p class="section-sub">대출은 더 신중해야 하기에, 투명한 안내와 안전한 시스템을 약속드립니다.</p>
+      <div class="trust-grid">
+        <div>
+          <div class="review-card">
+            “여러 군데 알아봤는데 여기에서 조건을 한 번에 비교해볼 수 있어서 편했습니다. 상담도 친절했고, 불필요한 상품 권유 없이 딱 필요한 것만 안내해주셨어요.”
+            <div class="review-name">30대 직장인 고객 A님 (개인 의견 예시)</div>
+          </div>
+          <div class="review-card">
+            “기존 고금리 대출을 정리하고 이자 부담을 줄일 수 있었어요. 진행 과정도 단계별로 설명해 주셔서 안심하고 신청했습니다.”
+            <div class="review-name">40대 자영업자 고객 B님 (개인 의견 예시)</div>
+          </div>
+        </div>
+        <div>
+          <ul class="trust-badges">
+            <li>금융 관련 법규를 준수한 합법적인 중개 및 안내</li>
+            <li>개인(신용)정보는 암호화되어 안전하게 전송 및 보관</li>
+            <li>수수료, 이자, 기타 비용 등 중요 정보 사전 안내</li>
+            <li>대출 실행 여부와 관계없이 무료 상담 제공</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 하단 CTA -->
+  <section class="cta-bottom">
+    <div class="cta-wrap">
+      <div>
+        <div class="cta-bottom-title">지금 바로 내 대출 가능 조건을 확인해보세요</div>
+        <p class="cta-bottom-sub">
+          클릭 몇 번으로 예상 한도와 금리를 확인하고, 부담 없이 상담받아보실 수 있습니다.
+        </p>
+        <p class="cta-bottom-small">
+          ※ 실제 대출 가능 여부 및 조건은 신용도, 소득, 금융사 심사 기준 등에 따라 달라질 수 있습니다.
+        </p>
+      </div>
+      <div class="cta-bottom-card">
+        <form>
+          <div class="form-grid" style="margin-bottom:8px;">
+            <div>
+              <label>이름</label>
+              <input type="text" placeholder="홍길동" />
+            </div>
+            <div>
+              <label>연락처</label>
+              <input type="tel" placeholder="010-0000-0000" />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%; margin-bottom:6px;">
+            1분 만에 상담 신청
+          </button>
+          <p style="font-size:11px; color:#6b7280;">
+            상담 요청 시 개인정보 처리방침 및 이용약관에 동의한 것으로 간주됩니다.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-links">
+          <a href="#">회사소개</a>
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+          <a href="#">고객센터</a>
+        </div>
+        <div>대표전화 0000-0000</div>
+      </div>
+      <div class="footer-copy">
+        (예시) 상호: ㈜파이낸셜나우 | 대표자: 홍길동 | 사업자등록번호: 000-00-00000 | 주소: 서울특별시 00구 00로 00, 0층  
+        대출 진행 시 금융사 및 상품에 따라 중개수수료가 지급될 수 있습니다. 표기된 내용은 이해를 돕기 위한 예시이며, 실제 조건과 상이할 수 있습니다.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
