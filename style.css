@@ -264,3 +264,261 @@ ul {
         font-size: 2.2rem;
     }
 }
+/* ================== 공통 유틸리티 ================== */
+.section {
+    padding: 100px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bg-light {
+    background-color: var(--bg-light);
+}
+
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    margin: 15px 0;
+    line-height: 1.3;
+}
+
+.section-header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.badge.border-white {
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--white);
+    background: transparent;
+}
+
+/* ================== Section 1: 왜 안심철거를 선택해야 할까요? ================== */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.feature-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 32px;
+    border-radius: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary-color);
+}
+
+.icon-box {
+    font-size: 2rem;
+    background: #fff5f0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.feature-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.highlight-box {
+    background: #fff5f0;
+    border: 1px dashed var(--primary-color);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+/* ================== Section 2: 고민해결 ================== */
+.worry-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.worry-image-box {
+    flex: 1;
+    position: relative;
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 400px;
+    background: #e0e0e0;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.img-badge {
+    position: absolute;
+    bottom: 20px;
+    right: -20px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(255, 92, 0, 0.3);
+}
+
+.worry-content {
+    flex: 1;
+}
+
+.worry-content h2 {
+    font-size: 2.2rem;
+    line-height: 1.4;
+    margin: 15px 0 30px;
+}
+
+.check-list {
+    margin-bottom: 30px;
+}
+
+.check-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.check-icon {
+    color: var(--primary-color);
+}
+
+.solution-box {
+    background: #fff5f0;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    color: #d94e00;
+}
+
+/* ================== Section 3: 작업 프로세스 ================== */
+.process-section {
+    background-color: var(--bg-dark);
+    color: var(--white);
+}
+
+.process-section .section-header p {
+    color: #aaaaaa;
+}
+
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 60px;
+}
+
+.step-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.step-circle {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    color: var(--white);
+}
+
+.step-circle .step-num {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.step-circle strong {
+    font-size: 1.2rem;
+}
+
+/* 스텝별 컬러 포인트 (이미지 참고) */
+.color-1 { background: #ff5c00; }
+.color-2 { background: #e09f00; }
+.color-3 { background: #ff7b00; }
+.color-4 { background: #00a651; }
+
+.step-item p {
+    color: #cccccc;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* 스텝 연결 선 */
+.step-line {
+    flex: 0 0 50px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 80px; /* circle 중앙 높이 맞춤 */
+}
+
+/* ================== 반응형 (모바일) ================== */
+@media (max-width: 992px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .worry-container {
+        flex-direction: column;
+    }
+    
+    .img-badge {
+        right: 20px;
+    }
+
+    .process-steps {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .step-line {
+        display: none; /* 모바일에서는 연결선 숨김 */
+    }
+}
+
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
