@@ -1,0 +1,266 @@
+/* 기본 설정 및 변수 선언 */
+:root {
+    --primary-color: #ff5c00; /* 오렌지색 포인트 */
+    --primary-hover: #e05000;
+    --text-main: #333333;
+    --text-light: #666666;
+    --bg-dark: #1a1e23; /* 히어로 섹션 배경 */
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+    --border-color: #e5e5e5;
+    --max-width: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard', -apple-system, sans-serif;
+}
+
+body {
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 버튼 공통 스타일 */
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+.btn-large {
+    padding: 14px 32px;
+    font-size: 1.1rem;
+}
+
+.btn-full {
+    width: 100%;
+    padding: 14px 0;
+}
+
+/* ================== Header ================== */
+.site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-icon {
+    background: var(--primary-color);
+    color: var(--white);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.logo h1 {
+    font-size: 1.4rem;
+    color: var(--primary-color);
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+.header-contact {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.phone-number {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* ================== Hero Section ================== */
+.hero-section {
+    background-color: var(--bg-dark);
+    /* 실제 적용시엔 여기에 배경 이미지 추가: background: url('bg.jpg') center/cover; */
+    padding: 80px 0;
+    color: var(--white);
+}
+
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.badge {
+    display: inline-block;
+    background: rgba(255, 92, 0, 0.1);
+    color: var(--primary-color);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    border: 1px solid var(--primary-color);
+}
+
+.hero-content h2 {
+    font-size: 3rem;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-bottom: 40px;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.stat-item strong {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.stat-item span {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Hero Form */
+.hero-form-box {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 16px;
+    width: 400px;
+}
+
+.hero-form-box h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.hero-form-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hero-form-box input,
+.hero-form-box select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--text-main);
+    outline: none;
+}
+
+/* ================== 반응형 (모바일) ================== */
+@media (max-width: 992px) {
+    .header-container {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 0;
+        gap: 15px;
+    }
+    
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .hero-container {
+        flex-direction: column;
+    }
+
+    .hero-form-box {
+        width: 100%;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem;
+    }
+}
