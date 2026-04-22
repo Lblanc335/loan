@@ -522,3 +522,269 @@ ul {
         font-size: 2rem;
     }
 }
+/* ================== Section 4: 후기 ================== */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.review-card {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.stars {
+    color: #ffb800; /* 별점 노란색 */
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.review-text {
+    font-size: 1.05rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    color: var(--text-main);
+    min-height: 80px;
+}
+
+.reviewer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 15px;
+}
+
+.reviewer strong {
+    color: var(--primary-color);
+}
+
+.reviewer .date {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* ================== Section 5: FAQ ================== */
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    padding: 20px 25px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.faq-question .icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+/* 플러스 아이콘 만들기 */
+.faq-question .icon::before,
+.faq-question .icon::after {
+    content: '';
+    position: absolute;
+    background-color: var(--text-light);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+.faq-question .icon::before { width: 14px; height: 2px; }
+.faq-question .icon::after { width: 2px; height: 14px; }
+
+/* FAQ 펼쳐졌을 때 (Active 상태) */
+.faq-item.active {
+    border-color: var(--primary-color);
+    box-shadow: 0 5px 15px rgba(255, 92, 0, 0.1);
+}
+
+.faq-item.active .faq-question {
+    color: var(--primary-color);
+}
+
+.faq-item.active .icon::before,
+.faq-item.active .icon::after {
+    background-color: var(--primary-color);
+}
+
+.faq-item.active .icon::after {
+    transform: translate(-50%, -50%) rotate(90deg); /* 마이너스 모양으로 변형 */
+    opacity: 0;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #fafafa;
+}
+
+.faq-answer p {
+    padding: 0 25px 25px;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* ================== Section 6: 하단 CTA ================== */
+.bottom-cta-section {
+    padding-bottom: 0; /* 하단 폼은 푸터와 붙도록 */
+}
+
+.cta-wrapper {
+    display: flex;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    margin-bottom: 100px;
+}
+
+.cta-left {
+    flex: 1;
+    background-color: var(--bg-dark);
+    /* 여기에 어두운 현장 배경 이미지 추가 추천: background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('dark-bg.jpg') center/cover; */
+    padding: 60px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+}
+
+.cta-info-box h3 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+    margin: 20px 0;
+}
+
+.cta-info-box p {
+    color: #cccccc;
+    margin-bottom: 40px;
+}
+
+.cta-contact .phone {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.cta-right {
+    flex: 1;
+    background: var(--white);
+    padding: 60px;
+}
+
+.cta-form-box h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.privacy-notice {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* ================== Footer ================== */
+.site-footer {
+    background-color: #111;
+    color: #888;
+    padding: 60px 0 40px;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-info p {
+    margin-top: 15px;
+    line-height: 1.8;
+}
+
+.footer-info .copyright {
+    margin-top: 30px;
+    color: #555;
+}
+
+.footer-links h4 {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+/* ================== 반응형 (모바일) ================== */
+@media (max-width: 992px) {
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-wrapper {
+        flex-direction: column;
+    }
+
+    .cta-left, .cta-right {
+        padding: 40px 20px;
+    }
+}
