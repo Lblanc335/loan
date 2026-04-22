@@ -142,9 +142,12 @@ ul {
 
 /* ================== Hero Section ================== */
 .hero-section {
-    background-color: var(--bg-dark);
-    /* 실제 적용시엔 여기에 배경 이미지 추가: background: url('bg.jpg') center/cover; */
-    padding: 80px 0;
+    background: linear-gradient(rgba(26, 30, 35, 0.8), rgba(26, 30, 35, 0.7)), url('main-bg.jpg');
+    
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 100px 0;
     color: var(--white);
 }
 
